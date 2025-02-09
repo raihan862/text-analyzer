@@ -1,0 +1,50 @@
+{
+  "id": "text-analyzer",
+  "realm": "text-analyzer",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "nestjs-oauth-client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "redirectUris": ["http://localhost:3000/auth/callback"],
+      "clientAuthenticatorType": "client-secret",
+      "secret": "my-client-secret",
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "serviceAccountsEnabled": true
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "credentials": [{ "type": "password", "value": "admin123" }],
+      "realmRoles": ["admin"],
+      "requiredActions": []
+    },
+    {
+      "username": "user",
+      "enabled": true,
+      "email": "user@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "user123",
+          "temporary": false
+        }
+      ],
+      "requiredActions": [],
+      "realmRoles": ["user"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      { "name": "admin", "description": "Administrator Role" },
+      { "name": "user", "description": "Regular User Role" }
+    ]
+  }
+}
